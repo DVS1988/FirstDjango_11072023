@@ -3,9 +3,15 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    text = '''<h1>"Изучаем django"</h1>
-          <strong>Автор</strong>: <i>Иванов И.П.</i>'''
-    return HttpResponse(text)
+   context = {
+       "name": "Петров Николай Иванович",
+       "email": "my_mail@mail.ru"
+   }
+   # text = '''<h1>"Изучаем django"</h1>
+   #       <strong>Автор</strong>: <i>Иванов И.П.</i>'''
+   #return HttpResponse(text)
+   return render(request, "index.html", context)
+
 
 author ={
     "name" : "Иван",
@@ -57,8 +63,13 @@ def get_item(request, id):
 
 def item_list(request):
     ##
-    result = "<h2>Список товаров</h2><ol>"
-    for item in items:
-        result += f"<li><a href='/item/{item['id']}'>{item['name']}</a></li>"
-    result += '</ol>'
-    return HttpResponse(result)
+    #result = "<h2>Список товаров</h2><ol>"
+    #for item in items:
+    #    result += f"<li><a href='/item/{item['id']}'>{item['name']}</a></li>"
+    #result += '</ol>'
+    #return HttpResponse(result)
+    context = {
+        "items": items
+    }
+    # Аргументы render: Запрос(request), Имя файла-шаблона, Контекст (чем заполняем)
+    return render(request, "items-list.html", context)
