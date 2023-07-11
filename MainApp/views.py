@@ -49,15 +49,18 @@ def about(request):
 def get_item(request, id):
     #print(f'{id =}, {type(id) = }')
     for item in items:
-        if item['id'] == id:
-            result = f'''
-            <h2>Имя: {item['quantity']}</h2>
-            <p>Количество: {item['quantity']} </p>
-            <a href='/items'> Назад </a>
-            '''
-            return HttpResponse(result)
-        #else:
-            #return HttpResponseNotFound(f'Item with id={id} not found')
+       if item['id'] == id:
+       #     result = f'''
+       #     <h2>Имя: {item['quantity']}</h2>
+       #     <p>Количество: {item['quantity']} </p>
+       #     <a href='/items'> Назад </a>
+       #     '''
+       #     return HttpResponse(result)
+        context = {
+            'item': item
+        }
+        return render(request, "item-page.html", context)
+
     return HttpResponseNotFound(f'Item with id={id} not found')    
 
 
