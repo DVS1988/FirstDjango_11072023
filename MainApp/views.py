@@ -43,7 +43,9 @@ def about(request):
         Отчество: <b>{author["middle"]}</b><br>
         Фамилия: <b>{author["surname"]}</b><br>
         телефон: <b>{author["phone"]}</b><br>
-        email: <b>{author["email"]}</b><br>'''
+        Email: <b>{author["email"]}</b><br>
+        <a href='/'> Home </a>
+        '''
     return HttpResponse(result)
 
 def get_item(request, id):
