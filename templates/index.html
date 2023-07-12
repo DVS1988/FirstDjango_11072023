@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start page</title>
-</head>
-<body>
-    <header>
-        / <a href="/">Home</a> / <a href="/items">Items</a> / <a href="/about">About</a> /
-    </header>
-    <h1>Приветствую</h1>
+{% extends 'base.html' %}
 
-    Меня зовут: <i>{{ name }}.</i> <br>
-    Мой email для связи: <i>{{ email }}.</i> <br>
+{% load static %}
+
+{% block content %}
+{# Подставляем содержимое файла inc-menu.html #}
+{% include 'inc-menu.html' %}
+<img width="50px" src="{% static 'django.svg' %}" alt="My image">
+<h1 class="demo">Приветствую</h1>
+
+<span style='color: blue'>Меня зовут: {{ name }}.</span><br>
+Мой email для связи: <i>{{ email }}.</i> <br>
 
 
-</body>
-</html>
+{% endblock %}
